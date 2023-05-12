@@ -16,6 +16,9 @@ const user = mongoose.model("userInfo");
 
 
 app.use(cors());
+app.get("/", (req, res)=>{
+ res.send("Running...");
+});
 
 app.use(session({
   secret: "secret",
