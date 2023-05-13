@@ -219,7 +219,7 @@ const {
         jeeMainRankCard,
         jeeAdvRankCard,
           category } = req.body;
-        
+          console.log(fName, lName, gender);
   try {
     await counsellingFormUser.create({
       fName,
