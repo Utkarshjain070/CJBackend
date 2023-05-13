@@ -11,14 +11,24 @@ const session = require("express-session");
 const passport = require("passport");
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
 require("./userdetails.js");
+require("./counsellingForm.js")
 const user = mongoose.model("userInfo");
+const counsellingFormUser = mongoose.model("counsellingFormDetails");
 
+
+mongoose.connect(mongoUrl, {
+  useNewUrlParser: true,
+})
+.then(() => {
+  console.log("Connected to database");
+})
+.catch((e) => console.log(e));
 
 
 app.use(cors());
 app.get("/", (req, res)=>{
  res.send("Running...");
-});
+})
 
 app.use(session({
   secret: "secret",
@@ -36,7 +46,7 @@ passport.use(
       clientID:
         "395163140620-1h5643kfn6t15gv2dab8h3gtj08p5kn1.apps.googleusercontent.com",
       clientSecret: "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",
-      callbackURL: "http://localhost:8080/auth/google/callback",
+      callbackURL: "https://cjbackend.onrender.com/auth/google/callback",
       passReqToCallback: true,
       proxy: true,
     },
@@ -86,7 +96,7 @@ passport.deserializeUser(function (User, done) {
 
 
 app.get(
-  "/auth/google/callback",
+  "https://cjbackend.onrender.com/auth/google/callback",
   passport.authenticate("google", {
     failureRedirect: "http://localhost:3000/login",
   }),
@@ -105,18 +115,11 @@ app.get(
 );
 
 app.get(
-  "/auth/google",
+  "https://cjbackend.onrender.com/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-mongoose
-  .connect(mongoUrl, {
-    useNewUrlParser: true,
-  })
-  .then(() => {
-    console.log("Connected to database");
-  })
-  .catch((e) => console.log(e));
+
 
 app.use(express.json());
 // app.post("/post",(req,res)=>{
@@ -130,7 +133,7 @@ app.use(express.json());
 
 
 
-app.post("/register", async (req, res) => {
+app.post("https://cjbackend.onrender.com/register", async (req, res) => {
   const { nameofuser, email, password } = req.body;
   const saltRounds = 10;
   const salt = await bcrypt.genSalt(saltRounds);
@@ -155,7 +158,7 @@ app.post("/register", async (req, res) => {
 
 const JWT_SECRET = "dfsdhfbhjdnunf8n8y4ry48w9snifrurfusdsvsfdfrfte54ttgrfgdgs";
 
-app.post("/login", async (req, res) => {
+app.post("https://cjbackend.onrender.com/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -179,7 +182,7 @@ app.post("/login", async (req, res) => {
     res.send({ error: "error" });
   }
 });
-app.post("/userdata", (req, res) => {
+app.post("https://cjbackend.onrender.com/userdata", (req, res) => {
   const { token } = req.body;
 
   try {
