@@ -197,11 +197,47 @@ app.post("/userdata", (req, res) => {
     console.log(error);
   }
 });
-app.post("/counsellingForm", (req, res) => {
+app.post("/counsellingForm", async (req, res) => {
   //const { token } = req.body;
-
+const { 
+      fName ,
+        lName ,
+        email ,
+        gender ,
+        phone ,
+        address,
+        jeeMainPerc,
+        jeeMainCRLRank,
+        jeeMainCatRank,
+        jeeAdvCRLRank,
+        jeeAdvCatRank,
+        homeState,
+        jeeAppNo,
+        jeeMainRankCard,
+        jeeAdvRankCard,
+          category } = req.body;
   try {
- res.send("fsdfdfsdf")
+    await counsellingFormUser.create({
+      fName,
+      lName,
+      fName ,
+        lName ,
+        email ,
+        gender ,
+        phone ,
+        address,
+        jeeMainPerc,
+        jeeMainCRLRank,
+        jeeMainCatRank,
+        jeeAdvCRLRank,
+        jeeAdvCatRank,
+        homeState,
+        jeeAppNo,
+        jeeMainRankCard,
+        jeeAdvRankCard,
+          category,
+    });
+    res.send({ status: "ok" });
   } catch (error) {
     console.log(error);
   }
