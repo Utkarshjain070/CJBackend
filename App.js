@@ -197,5 +197,14 @@ app.post("/userdata", (req, res) => {
     console.log(error);
   }
 });
+app.post("/counsellingForm", (req, res) => {
+  //const { token } = req.body;
+
+  try {
+ res.send("fsdfdfsdf")
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
