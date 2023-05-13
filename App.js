@@ -133,7 +133,7 @@ app.use(express.json());
 
 
 
-app.post("https://cjbackend.onrender.com/register", async (req, res) => {
+app.post("/register", async (req, res) => {
   const { nameofuser, email, password } = req.body;
   const saltRounds = 10;
   const salt = await bcrypt.genSalt(saltRounds);
@@ -158,7 +158,7 @@ app.post("https://cjbackend.onrender.com/register", async (req, res) => {
 
 const JWT_SECRET = "dfsdhfbhjdnunf8n8y4ry48w9snifrurfusdsvsfdfrfte54ttgrfgdgs";
 
-app.post("https://cjbackend.onrender.com/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -182,7 +182,7 @@ app.post("https://cjbackend.onrender.com/login", async (req, res) => {
     res.send({ error: "error" });
   }
 });
-app.post("https://cjbackend.onrender.com/userdata", (req, res) => {
+app.post("/userdata", (req, res) => {
   const { token } = req.body;
 
   try {
@@ -219,6 +219,7 @@ const {
         jeeMainRankCard,
         jeeAdvRankCard,
           category } = req.body;
+        
   try {
     await counsellingFormUser.create({
       fName,
