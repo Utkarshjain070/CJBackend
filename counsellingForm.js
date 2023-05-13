@@ -5,6 +5,7 @@ const counsellingFormSchema = new mongoose.Schema(
         lName : String,
         email : String,
         gender : String,
+        category: String,
         phone : String,
         address: String,
         jeeMainPerc: String,
@@ -34,3 +35,4 @@ const counsellingFormSchema = new mongoose.Schema(
 )
 
 mongoose.model("counsellingFormDetails",counsellingFormSchema);
+module.exports = mongoose.model('counsellingFormDetails', counsellingFormSchema);
