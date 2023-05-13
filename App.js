@@ -202,13 +202,46 @@ app.post("/userdata", (req, res) => {
 });
 app.post("/counsellingForm", async (req, res) => {
   //const { token } = req.body;
-const { data } = req.body;
+const { 
+      fName ,
+        lName ,
+        email ,
+        gender ,
+        phone ,
+        address,
+        jeeMainPerc,
+        jeeMainCRLRank,
+        jeeMainCatRank,
+        jeeAdvCRLRank,
+        jeeAdvCatRank,
+        homeState,
+        jeeAppNo,
+        jeeMainRankCard,
+        jeeAdvRankCard,
+          category } = req.body;
 
          
         
   try {
     await counsellingFormUser.create({
-      data
+      fName,
+      lName,
+      fName ,
+        lName ,
+        email ,
+        gender ,
+        phone ,
+        address,
+        jeeMainPerc,
+        jeeMainCRLRank,
+        jeeMainCatRank,
+        jeeAdvCRLRank,
+        jeeAdvCatRank,
+        homeState,
+        jeeAppNo,
+        jeeMainRankCard,
+        jeeAdvRankCard,
+          category,
     });
 
     res.send({ status: "ok" });
