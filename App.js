@@ -96,7 +96,7 @@ passport.deserializeUser(function (User, done) {
 
 
 app.get(
-  "/google/callback",
+  "https://cjbackend.onrender.com/auth/google/callback",
   passport.authenticate("google", {
     failureRedirect: "http://localhost:3000/login",
   }),
