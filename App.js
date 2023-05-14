@@ -98,7 +98,7 @@ passport.deserializeUser(function (User, done) {
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/",
+    failureRedirect: "https://jaankaarapp.web.app/",
   }),
   function (req, res) {
     // Successful authentication, redirect home
@@ -110,7 +110,7 @@ app.get(
     // }
 
    
-    res.redirect("https://www.google.com/");
+    res.redirect("https://jaankaarapp.web.app/");
   }
 );
 
