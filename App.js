@@ -107,7 +107,8 @@ app.get(
     //   return res.send({ status: "ok", data: req.user});
     // } else {
     //   return res.send({ error: "error" });
-    // }
+    //
+  //}
 
    
     res.redirect("http://localhost:3000");
