@@ -110,7 +110,7 @@ app.get(
     // }
 
    
-    res.redirect("/");
+    res.redirect("https://www.google.com/");
   }
 );
 
