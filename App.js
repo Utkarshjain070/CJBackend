@@ -98,7 +98,7 @@ passport.deserializeUser(function (User, done) {
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000/login",
+    failureRedirect: "/",
   }),
   function (req, res) {
     // Successful authentication, redirect home
@@ -107,11 +107,10 @@ app.get(
     //   return res.send({ status: "ok", data: req.user});
     // } else {
     //   return res.send({ error: "error" });
-    //
-  //}
+    // }
 
    
-    res.redirect("http://localhost:3000");
+    res.redirect("/");
   }
 );
 
